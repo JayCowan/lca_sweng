@@ -4,18 +4,20 @@ class Node<T extends Comparable<T>> {
   Node({required this.value});
 
   void insert(T input) {
-    if (value.compareTo(input) >= 0) {
+    if (value.compareTo(input) > 0) {
       if (right is Node) {
         right!.insert(input);
       } else {
         right = Node(value: input);
       }
-    } else {
+    } else if (value.compareTo(input) < 0) {
       if (left is Node) {
         left!.insert(input);
       } else {
         left = Node(value: input);
       }
+    } else {
+      return;
     }
   }
 
