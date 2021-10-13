@@ -2,3 +2,4 @@ A simple command-line application written in dart that lets you enter binary tre
 1. Open a terminal to the lca_sweng directory.
 2. From the terminal enter `dart run`
 3. Follow instructions to build your tree and find a Lowest Common Ancestor
+Click [here](doc/api/index.html) to view the docs.
