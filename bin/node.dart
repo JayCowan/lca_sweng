@@ -4,13 +4,13 @@ class Node<T extends Comparable<T>> {
   Node({required this.value});
 
   void insert(T input) {
-    if (value.compareTo(input) > 0) {
+    if (value.compareTo(input) < 0) {
       if (right is Node) {
         right!.insert(input);
       } else {
         right = Node(value: input);
       }
-    } else if (value.compareTo(input) < 0) {
+    } else if (value.compareTo(input) > 0) {
       if (left is Node) {
         left!.insert(input);
       } else {
@@ -63,6 +63,6 @@ class Node<T extends Comparable<T>> {
 
   @override
   String toString() {
-    return 'Node with value: $value, right-hand value: ${right?.value} and left-hand value: ${left?.value}';
+    return 'Node with value: $value, left-hand value: ${left?.value} and right-hand value: ${right?.value}';
   }
 }
