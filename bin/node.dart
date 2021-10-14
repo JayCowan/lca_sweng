@@ -24,7 +24,7 @@ class Node<T extends Comparable<T>> {
   Node<T>? find(T item) {
     if (value.compareTo(item) == 0) {
       return this;
-    } else if (value.compareTo(item) > 0) {
+    } else if (value.compareTo(item) < 0) {
       return right?.find(item);
     } else {
       return left?.find(item);
