@@ -11,4 +11,25 @@ main() {
     var dag = DirectedAcyclicGraph<Object>(rootValue: 0);
     expect(dag.root is Vertex, true);
   });
+  test("create DAG with int values", () {
+    var dag = DirectedAcyclicGraph<int>(rootValue: 1);
+    expect(dag.root is Vertex<int>, true);
+  });
+  test("create DAG with string values", () {
+    var dag = DirectedAcyclicGraph<String>(rootValue: "H");
+    dag.addVertex("e");
+    dag.addVertex("l");
+    dag.addVertex("l");
+    dag.addVertex("o");
+    dag.addVertex(" ");
+    dag.addVertex("W");
+    dag.addVertex("o");
+    dag.addVertex("r");
+    dag.addVertex("l");
+    dag.addVertex("d");
+    dag.addVertex("!");
+    for (var char in "Hello World!".split("")) {
+      expect(dag.find(char) is Vertex, true);
+    }
+  });
 }

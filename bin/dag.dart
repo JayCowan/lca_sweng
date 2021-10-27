@@ -1,5 +1,4 @@
 import 'dart:collection';
-
 import 'vertex.dart';
 
 class DirectedAcyclicGraph<T> {
@@ -11,15 +10,19 @@ class DirectedAcyclicGraph<T> {
     nodes.add(root);
   }
 
-  Vertex<T> find(T value) {
-    throw UnimplementedError();
+  Vertex<T>? find(T value) {
+    for (var element in nodes) {
+      if (element.value == value) {
+        return element;
+      }
+    }
   }
 
   void addEdge(T from, T to) {
     throw UnimplementedError();
   }
 
-  Vertex<T>? addVertex(T value, T from) {
+  Vertex<T>? addVertex(T value) {
     throw UnimplementedError();
   }
 

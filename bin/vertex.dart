@@ -3,16 +3,16 @@ class Vertex<T> {
   final T value;
   Vertex({required this.value});
 
-  Vertex<T> find(T value) {
-    throw UnimplementedError();
-  }
-
-  void addEdge(T to) {
-    throw UnimplementedError();
-  }
-
-  Vertex<T>? addVertex(T value) {
-    throw UnimplementedError();
+  Vertex<T>? find(T value) {
+    if (this.value == value) {
+      return this;
+    } else {
+      if (children is Set) {
+        for (var child in children!) {
+          return child.find(value);
+        }
+      }
+    }
   }
 
   Set<Vertex<T>> getAncestors(T value) {
