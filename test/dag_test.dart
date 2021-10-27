@@ -7,16 +7,15 @@ main() {
     DirectedAcyclicGraph<Object>? dag;
     expect(dag is DirectedAcyclicGraph<Object>, false);
   });
-  test("create DAG with a root", () {
-    var dag = DirectedAcyclicGraph<Object>(rootValue: 0);
-    expect(dag.root is Vertex, true);
+  test("create DAG with a vertex", () {
+    var dag = DirectedAcyclicGraph<Object>();
+    dag.addVertex(1);
+    expect(dag.graph.first is Vertex, true);
   });
-  test("create DAG with int values", () {
-    var dag = DirectedAcyclicGraph<int>(rootValue: 1);
-    expect(dag.root is Vertex<int>, true);
-  });
+  // TODO: Refactor to take into account non, repeated values
   test("create DAG with string values", () {
-    var dag = DirectedAcyclicGraph<String>(rootValue: "H");
+    var dag = DirectedAcyclicGraph<String>();
+    dag.addVertex("H");
     dag.addVertex("e");
     dag.addVertex("l");
     dag.addVertex("l");

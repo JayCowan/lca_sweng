@@ -2,9 +2,11 @@ import 'package:test/test.dart';
 import '../bin/dag.dart';
 import '../bin/vertex.dart';
 
+// TODO: Test to prevent cyclic graphs from being created
 main() {
   test("Create int vertecies for DAG", () {
-    var dag = DirectedAcyclicGraph<int>(rootValue: 1);
+    var dag = DirectedAcyclicGraph<int>();
+    dag.addVertex(1);
     dag.addVertex(2);
     dag.addVertex(3);
     dag.addVertex(4);
@@ -18,7 +20,8 @@ main() {
     }
   });
   test("Add string verticies to DAG", () {
-    var dag = DirectedAcyclicGraph<String>(rootValue: "a");
+    var dag = DirectedAcyclicGraph<String>();
+    dag.addVertex("a");
     dag.addVertex("b");
     dag.addVertex("c");
     dag.addVertex("d");

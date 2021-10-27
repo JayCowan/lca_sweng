@@ -4,7 +4,8 @@ import '../bin/vertex.dart';
 
 main() {
   test("Get ancestors of an int DAG", () {
-    var dag = DirectedAcyclicGraph<int>(rootValue: 1);
+    var dag = DirectedAcyclicGraph<int>();
+    dag.addVertex(1);
     dag.addVertex(2);
     dag.addVertex(3);
     dag.addVertex(4);
@@ -58,7 +59,8 @@ main() {
     });
   });
   test("Get ancestors of a String DAG", () {
-    var dag = DirectedAcyclicGraph<String>(rootValue: "a");
+    var dag = DirectedAcyclicGraph<String>();
+    dag.addVertex("a");
     dag.addVertex("b");
     dag.addVertex("c");
     dag.addVertex("d");

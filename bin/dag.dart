@@ -2,16 +2,12 @@ import 'dart:collection';
 import 'vertex.dart';
 
 class DirectedAcyclicGraph<T> {
-  late final Vertex<T> root;
-  HashSet<Vertex<T>> nodes = HashSet<Vertex<T>>();
+  HashSet<Vertex<T>> graph = HashSet<Vertex<T>>();
 
-  DirectedAcyclicGraph({required T rootValue}) {
-    root = Vertex(value: rootValue);
-    nodes.add(root);
-  }
+  DirectedAcyclicGraph();
 
   Vertex<T>? find(T value) {
-    return nodes.firstWhere((element) => element.value == value);
+    return graph.where((element) => element.value == value).single;
   }
 
   bool addEdge(T from, T to) {
@@ -20,11 +16,12 @@ class DirectedAcyclicGraph<T> {
   }
 
   bool addVertex(T value) {
-    return nodes.add(Vertex<T>(value: value));
+    return graph.add(Vertex<T>(value: value));
   }
 
   Set<Vertex<T>> getAncestors(T value) {
-    throw UnimplementedError();
+    var traversal = <Vertex<T>>{};
+    return traversal;
   }
 
   Set<Vertex<T>>? getDescendants(T value) {
