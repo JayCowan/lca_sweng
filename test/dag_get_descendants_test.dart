@@ -60,6 +60,15 @@ main() {
     expect(dag.getDescendants(8), <Vertex<int>>{dag.find(9)!});
     expect(dag.getDescendants(9), <Vertex<int>>{});
   });
+  test("Manually test descendants", () {
+    var dag = DirectedAcyclicGraph<int>();
+    dag.addVertex(1);
+    dag.addVertex(2);
+    dag.addVertex(3);
+    dag.find(1)?.children.addAll([dag.find(2)!, dag.find(3)!]);
+    expect(dag.find(1)!.getDescendants(),
+        <Vertex<int>>{dag.find(2)!, dag.find(3)!});
+  });
   test("Get descendants of String DAG", () {
     var dag = DirectedAcyclicGraph<String>();
     dag.addVertex("a");
