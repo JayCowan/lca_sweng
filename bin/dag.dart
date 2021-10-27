@@ -1,10 +1,17 @@
-import 'graph_node.dart';
+import 'dart:collection';
+
+import 'vertex.dart';
 
 class DirectedAcyclicGraph<T> {
-  final GraphNode<T> root;
-  DirectedAcyclicGraph(this.root);
+  late final Vertex<T> root;
+  HashSet<Vertex<T>> nodes = HashSet<Vertex<T>>();
 
-  GraphNode<T> find(T value) {
+  DirectedAcyclicGraph({required T rootValue}) {
+    root = Vertex(value: rootValue);
+    nodes.add(root);
+  }
+
+  Vertex<T> find(T value) {
     throw UnimplementedError();
   }
 
@@ -12,15 +19,15 @@ class DirectedAcyclicGraph<T> {
     throw UnimplementedError();
   }
 
-  GraphNode<T>? addVertex(T value, T from) {
+  Vertex<T>? addVertex(T value, T from) {
     throw UnimplementedError();
   }
 
-  Set<GraphNode<T>> getAncestors(T value) {
+  Set<Vertex<T>> getAncestors(T value) {
     throw UnimplementedError();
   }
 
-  Set<GraphNode<T>> getDescendants(T value) {
+  Set<Vertex<T>> getDescendants(T value) {
     throw UnimplementedError();
   }
 }

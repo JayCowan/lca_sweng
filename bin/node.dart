@@ -1,27 +1,27 @@
-class BTNode<T extends Comparable<T>> {
+class Node<T extends Comparable<T>> {
   final T value;
-  BTNode<T>? left, right;
-  BTNode({required this.value});
+  Node<T>? left, right;
+  Node({required this.value});
 
   void insert(T input) {
     if (value.compareTo(input) < 0) {
-      if (right is BTNode) {
+      if (right is Node) {
         right!.insert(input);
       } else {
-        right = BTNode(value: input);
+        right = Node(value: input);
       }
     } else if (value.compareTo(input) > 0) {
-      if (left is BTNode) {
+      if (left is Node) {
         left!.insert(input);
       } else {
-        left = BTNode(value: input);
+        left = Node(value: input);
       }
     } else {
       return;
     }
   }
 
-  BTNode<T>? find(T item) {
+  Node<T>? find(T item) {
     if (value.compareTo(item) == 0) {
       return this;
     } else if (value.compareTo(item) < 0) {
@@ -31,27 +31,27 @@ class BTNode<T extends Comparable<T>> {
     }
   }
 
-  BTNode<T>? lca(T item1, T item2, BTNode<T> lca) {
-    if (lca.left?.find(item1) is BTNode) {
-      if (lca.left!.find(item2) is BTNode) {
+  Node<T>? lca(T item1, T item2, Node<T> lca) {
+    if (lca.left?.find(item1) is Node) {
+      if (lca.left!.find(item2) is Node) {
         return lca.left!.lca(item1, item2, lca.left!);
       } else {
         return lca;
       }
-    } else if (lca.left?.find(item2) is BTNode) {
-      if (lca.left!.find(item1) is BTNode) {
+    } else if (lca.left?.find(item2) is Node) {
+      if (lca.left!.find(item1) is Node) {
         return lca.left!.lca(item1, item2, lca.left!);
       } else {
         return lca;
       }
-    } else if (lca.right?.find(item1) is BTNode) {
-      if (lca.right!.find(item2) is BTNode) {
+    } else if (lca.right?.find(item1) is Node) {
+      if (lca.right!.find(item2) is Node) {
         return lca.right!.lca(item1, item2, lca.right!);
       } else {
         return lca;
       }
-    } else if (lca.right?.find(item2) is BTNode) {
-      if (lca.right!.find(item1) is BTNode) {
+    } else if (lca.right?.find(item2) is Node) {
+      if (lca.right!.find(item1) is Node) {
         return lca.right!.lca(item1, item2, lca.right!);
       } else {
         return lca;
