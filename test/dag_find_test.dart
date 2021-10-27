@@ -13,8 +13,9 @@ main() {
     dag.addVertex(7);
     dag.addVertex(8);
     dag.addVertex(9);
-    for (int i = 1; i <= 10; i++) {
-      expect(dag.find(i), Vertex<int>(value: i));
+    for (int i = 1; i < 10; i++) {
+      expect(
+          dag.find(i), dag.nodes.where((element) => element.value == i).single);
     }
   });
   test("Find vertecies from String DAG", () {
@@ -30,7 +31,8 @@ main() {
     dag.addVertex("j");
     dag.addVertex("k");
     for (var char in "abcdefghijk".split("")) {
-      expect(dag.find(char), Vertex<String>(value: char));
+      expect(dag.find(char),
+          dag.nodes.where((element) => element.value == char).single);
     }
   });
 }
