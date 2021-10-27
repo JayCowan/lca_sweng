@@ -12,7 +12,12 @@ class DirectedAcyclicGraph<T> {
 
   bool addEdge(T from, T to) {
     var toVertex = find(to);
-    return find(from)!.children!.add(toVertex!);
+    var fromVertex = find(from);
+    if (toVertex!.getDescendants().contains(fromVertex)) {
+      return fromVertex!.children!.add(toVertex);
+    } else {
+      return false;
+    }
   }
 
   bool addVertex(T value) {

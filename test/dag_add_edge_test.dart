@@ -1,8 +1,6 @@
-import 'dart:math';
 
 import 'package:test/test.dart';
 import '../bin/dag.dart';
-import '../bin/vertex.dart';
 
 // TODO: Test to prevent cyclic graphs from being created
 main() {

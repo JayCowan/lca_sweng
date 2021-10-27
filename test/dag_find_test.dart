@@ -1,6 +1,5 @@
 import 'package:test/test.dart';
 import '../bin/dag.dart';
-import '../bin/vertex.dart';
 
 main() {
   test("Find vertecies from int DAG", () {
