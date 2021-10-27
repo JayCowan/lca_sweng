@@ -2,7 +2,6 @@ import 'package:test/test.dart';
 import '../bin/dag.dart';
 import '../bin/vertex.dart';
 
-// TODO: Test to prevent cyclic graphs from being created
 main() {
   test("Create int vertecies for DAG", () {
     var dag = DirectedAcyclicGraph<int>();
@@ -35,5 +34,15 @@ main() {
     for (var char in "abcdefghijk".split("")) {
       expect(dag.find(char) is Vertex, true);
     }
+  });
+  test("Test addVertex to prevent repeat values.", () {
+    var dag = DirectedAcyclicGraph<String>();
+    for (var char in "Hello World!".split("")) {
+      dag.addVertex(char);
+    }
+    expect(() => dag.graph.where((element) => element.value == "l").single,
+        throwsStateError);
+    expect(() => dag.graph.where((element) => element.value == "o").single,
+        throwsStateError);
   });
 }

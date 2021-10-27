@@ -11,24 +11,5 @@ main() {
     var dag = DirectedAcyclicGraph<Object>();
     dag.addVertex(1);
     expect(dag.graph.first is Vertex, true);
-  });
-  // TODO: Refactor to take into account non, repeated values
-  test("create DAG with string values", () {
-    var dag = DirectedAcyclicGraph<String>();
-    dag.addVertex("H");
-    dag.addVertex("e");
-    dag.addVertex("l");
-    dag.addVertex("l");
-    dag.addVertex("o");
-    dag.addVertex(" ");
-    dag.addVertex("W");
-    dag.addVertex("o");
-    dag.addVertex("r");
-    dag.addVertex("l");
-    dag.addVertex("d");
-    dag.addVertex("!");
-    for (var char in "Hello World!".split("")) {
-      expect(dag.find(char) is Vertex, true);
-    }
-  });
+  });  
 }

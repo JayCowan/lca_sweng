@@ -1,8 +1,6 @@
-
 import 'package:test/test.dart';
 import '../bin/dag.dart';
 
-// TODO: Test to prevent cyclic graphs from being created
 main() {
   test("Add edges to int DAG", () {
     var dag = DirectedAcyclicGraph<int>();
@@ -84,7 +82,8 @@ main() {
     expect(
         dag
             .find("e")
-            ?.children.containsAll({dag.find("f")!, dag.find("g")!, dag.find("h")}),
+            ?.children
+            .containsAll({dag.find("f")!, dag.find("g")!, dag.find("h")}),
         true);
     expect(dag.find("f")?.children.isEmpty, true);
     expect(dag.find("g")?.children.isEmpty, true);
@@ -105,5 +104,17 @@ main() {
     expect(dag.find("h")?.children.length, 1);
     expect(dag.find("i")?.children.length, 2);
     expect(dag.find("j")?.children.length, 1);
+  });
+
+  test("Test to prevent cyclic graphs from being created", () {
+    var dag = DirectedAcyclicGraph<int>();
+    dag.addVertex(1);
+    dag.addVertex(2);
+    dag.addVertex(3);
+    dag.addEdge(1, 2);
+    dag.addEdge(2, 3);
+    expect(dag.addEdge(3, 1), false);
+    expect(dag.find(3)?.children.where((element) => element.value == 1).isEmpty,
+        true);
   });
 }
