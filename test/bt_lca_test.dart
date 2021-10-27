@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_cast
+
 import 'package:test/test.dart';
 import '../bin/binary_tree.dart';
 
