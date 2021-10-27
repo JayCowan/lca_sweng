@@ -11,26 +11,23 @@ class DirectedAcyclicGraph<T> {
   }
 
   Vertex<T>? find(T value) {
-    for (var element in nodes) {
-      if (element.value == value) {
-        return element;
-      }
-    }
+    return nodes.firstWhere((element) => element.value == value);
   }
 
-  void addEdge(T from, T to) {
-    throw UnimplementedError();
+  bool addEdge(T from, T to) {
+    var toVertex = find(to);
+    return find(from)!.children!.add(toVertex!);
   }
 
-  Vertex<T>? addVertex(T value) {
-    throw UnimplementedError();
+  bool addVertex(T value) {
+    return nodes.add(Vertex<T>(value: value));
   }
 
   Set<Vertex<T>> getAncestors(T value) {
     throw UnimplementedError();
   }
 
-  Set<Vertex<T>> getDescendants(T value) {
-    throw UnimplementedError();
+  Set<Vertex<T>>? getDescendants(T value) {
+    return find(value)?.getDescendants();
   }
 }
