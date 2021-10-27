@@ -26,6 +26,13 @@ class DirectedAcyclicGraph<T> {
 
   Set<Vertex<T>> getAncestors(T value) {
     var traversal = <Vertex<T>>{};
+    var degree = graph.where((element) => element.children!
+        .where((element) => element.value == value)
+        .isNotEmpty);
+    traversal.addAll(degree);
+    for (var element in degree) {
+      traversal.addAll(getAncestors(element.value));
+    }
     return traversal;
   }
 

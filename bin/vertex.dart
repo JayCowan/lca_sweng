@@ -1,3 +1,5 @@
+import 'package:test/scaffolding.dart';
+
 class Vertex<T> {
   Set<Vertex<T>> children = <Vertex<T>>{};
   final T value;
