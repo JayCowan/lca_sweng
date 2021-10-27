@@ -38,4 +38,30 @@ class DirectedAcyclicGraph<T> {
   Set<Vertex<T>>? getDescendants(T value) {
     return find(value)?.getDescendants();
   }
+
+  Vertex<T>? lca(
+    T val1,
+    T val2,
+  ) {
+    var vert1 = find(val1)!;
+    var vert2 = find(val2)!;
+    if ((graph.any((element) => element.children.contains(vert1)) &&
+            graph.any((element) => element.children.contains(vert2))) ||
+        (val1 == val2)) {
+      if (vert1.getDescendants().contains(vert2)) {
+        return vert1;
+      } else if (vert2.getDescendants().contains(vert1)) {
+        return vert2;
+      } else {
+        return lca(
+            graph
+                .firstWhere((element) => element.children.contains(vert1),
+                    orElse: () => vert1)
+                .value,
+            val2);
+      }
+    } else {
+      throw ArgumentError("Invalid arguments provided");
+    }
+  }
 }
